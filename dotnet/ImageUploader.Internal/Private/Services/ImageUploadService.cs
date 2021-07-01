@@ -36,6 +36,11 @@ namespace ImageUploader.Foundation.Private.Services
             return mapper.Map<IEnumerable<ImageDto>>(imageRepository.GetAll());
         }
 
+        public IEnumerable<string> GetAllTags()
+        {
+            var allImages = imageRepository.GetAll();
+            return allImages.SelectMany(x => x.Tags).Distinct();
+        }
         public IEnumerable<ImageDto> GetByTags(IEnumerable<string> tags)
         {
             var imgs = imageRepository.GetByTags(tags);

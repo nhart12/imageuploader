@@ -2,7 +2,7 @@
 <div mat-dialog-content>
 
   <input type="file" placeholder="Upload your file" [formControl]="fileFormControl" required
-    (change)="fileChange($event)">
+    (change)="fileChange($event)" accept="image/*">
   <mat-error *ngIf="fileFormControl.invalid">Please select a file</mat-error>
 
   <mat-form-field>

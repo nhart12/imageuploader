@@ -11,6 +11,7 @@ type Image struct {
 	Description string
 	Data        []byte
 	FileName    string
+	ContentType string
 }
 
 type ImageDto struct {
@@ -19,5 +20,5 @@ type ImageDto struct {
 	Title       string    `json:"title"`
 	Description string    `json:"description"`
 	FileName    string    `json:"fileName"`
-	Url         string    `json:"url"`
+	Path        string    `json:"path"`
 }

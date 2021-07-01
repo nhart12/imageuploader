@@ -1,8 +1,18 @@
 export class ImageMetadataModel {
   constructor(
-    public title: string,
-    public description: string,
-    public tags: Array<string>
-  ) {}
+    title: string,
+    description: string,
+    tags: Array<string>
+  ) {
+    this.title = title;
+    this.tags = tags;
+    this.description = description;
+  }
 
+  title: string
+  description: string
+  tags: Array<string>
+  id: string
+  path: string
+  fileName: string
 }

@@ -11,6 +11,7 @@ namespace ImageUploader.Core
         public void DeleteImage(Guid id);
         public ImageDto Get(Guid id);
         public IEnumerable<ImageDto> GetAll();
+        IEnumerable<string> GetAllTags();
         public IEnumerable<ImageDto> GetByTags(IEnumerable<string> tags);
         public IEnumerable<ImageDto> GetByTitle(string title);
     }

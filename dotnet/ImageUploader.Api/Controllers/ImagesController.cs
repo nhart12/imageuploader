@@ -64,5 +64,6 @@ namespace ImageUploader.Api.Controllers
         {
             return Ok(imageUploadService.GetAll());
         }
+        
     }
 }

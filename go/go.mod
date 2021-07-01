@@ -1,4 +1,4 @@
-module github.com/nhart12/imageuploader
+module github.com/nhart12/imageuploader/go
 
 go 1.16
 

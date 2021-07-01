@@ -8,16 +8,19 @@ import { MatIconModule } from '@angular/material/icon'
 import { MatDialogModule } from '@angular/material/dialog';
 import { MatSnackBarModule } from '@angular/material/snack-bar';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatTooltipModule } from '@angular/material/tooltip';
 import { RouterModule } from '@angular/router';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-
+import { ClipboardModule } from '@angular/cdk/clipboard'
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
 import { ImageUploadComponent } from './image-uploader/image-uploader.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -39,7 +42,11 @@ import { NavMenuComponent } from './nav-menu/nav-menu.component';
     MatButtonModule,
     MatSnackBarModule,
     MatInputModule,
+    MatCardModule,
+    MatTooltipModule,
+    FlexLayoutModule,
     BrowserAnimationsModule,
+    ClipboardModule,
     RouterModule.forRoot([
       { path: '', component: HomeComponent, pathMatch: 'full' }
     ]),

@@ -2,7 +2,7 @@ package storage
 
 import (
 	"github.com/google/uuid"
-	"github.com/nhart12/imageuploader/pkg/core"
+	"github.com/nhart12/imageuploader/go/pkg/core"
 )
 
 var images = make(map[uuid.UUID]*core.Image)
@@ -54,7 +54,7 @@ func (r MockRepository) Get(id uuid.UUID) (*core.Image, error) {
 }
 func (r MockRepository) GetAll() ([]*core.Image, error) {
 	imgSlice := make([]*core.Image, 0, len(images))
-	for _, img := range imgSlice {
+	for _, img := range images {
 		imgSlice = append(imgSlice, img)
 	}
 	return imgSlice, nil

@@ -1,5 +1,5 @@
 <h1>Let's upload images!</h1>
-<p>To Get started click the button to upload some images</p>
+<p>To get started click the button to upload some images. You can also filter by clicking on a tag below</p>
 <button (click)="openUpload()" mat-raised-button>
   <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-cloud-upload" fill="currentColor"
     xmlns="http://www.w3.org/2000/svg">
@@ -10,3 +10,36 @@
     <title>Upload</title>
   </svg>
 </button>
+
+<div class="tag-filter-container">
+  <mat-chip-list selectable multiple>
+    <mat-chip #c="matChip" *ngFor="let tag of allTags" [value]="tag" (click)="toggleTagSelection(c)">
+      {{tag}}
+    </mat-chip>
+  </mat-chip-list>
+</div>
+<div class="images-container" fxLayout="row wrap" fxLayoutAlign="center center" fxLayoutGap="20px">
+
+  <mat-card fxFlex="0 1 calc(20% - 20px)" class="uploaded-image" *ngFor="let img of imagesMetadata">
+    <mat-card-header>
+      <mat-chip-list>
+        <mat-chip *ngFor="let tag of img.tags">{{tag}}</mat-chip>
+      </mat-chip-list>
+    </mat-card-header>
+    <img mat-card-image src="{{getImagePermalink(img)}}" alt="photo">
+    <mat-card-title>{{img.title}}</mat-card-title>
+    <mat-card-content>
+      <p>
+        {{img.description}}
+      </p>
+    </mat-card-content>
+    <mat-card-actions align="end">
+      <button mat-icon-button [cdkCopyToClipboard]="getImagePermalink(img)" matTooltip="Copy permalink to image">
+        <mat-icon>link</mat-icon>
+      </button>
+      <button mat-icon-button (click)="delete(img)" matTooltip="Delete the image">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </mat-card-actions>
+  </mat-card>
+</div>

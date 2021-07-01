@@ -4,8 +4,8 @@ import (
 	"log"
 	"net/http"
 
-	api "github.com/nhart12/imageuploader/pkg/api"
-	storage "github.com/nhart12/imageuploader/pkg/storage"
+	api "github.com/nhart12/imageuploader/go/pkg/api"
+	storage "github.com/nhart12/imageuploader/go/pkg/storage"
 	"github.com/rs/cors"
 )
 

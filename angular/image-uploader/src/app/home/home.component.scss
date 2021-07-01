@@ -1,0 +1,18 @@
+.uploaded-image {
+  min-width: 400px;
+  height: 350px;
+  text-align: center;
+  margin-bottom: 20px; 
+  img{
+    height: 150px;
+    object-fit: contain;
+  }
+}
+
+.images-container {
+  margin-top:20px;
+}
+
+.tag-filter-container{
+  margin-top:20px;
+}
