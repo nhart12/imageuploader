@@ -1,0 +1,68 @@
+
+
+<form #saveForm="ngForm">
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <label for="file">Upload your file</label>
+      <input type="file" (change)="fileChange($event)" placeholder="Upload file" accept="image/*" aria-describedby="fileFeedback" required [ngClass]="{'is-invalid' : model.file == null}">
+      <div id="fileFeedback" class="invalid-feedback">
+        Select a file
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <label for="title">Image Title</label>
+      <input [(ngModel)]="model.title" name="title" type="text" class="form-control is-invalid" id="title" aria-describedby="titleFeedback" required [ngClass]="{'is-invalid' : model.title == null}">
+      <div id="titleFeedback" class="invalid-feedback">
+        Please provide the title
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <label for="description">Image Description</label>
+      <textarea [(ngModel)]="model.description"
+                name="description"
+                type="text"
+                class="form-control "
+                id="description"
+                aria-describedby="descriptionFeedback" required [ngClass]="{'is-invalid' : model.description == null}">
+      </textarea>
+      <div id="descriptionFeedback" class="invalid-feedback">
+        Please provide description
+      </div>
+    </div>
+  </div>
+  <div class="form-row">
+    <div class="col-md-12 mb-12">
+      <mat-form-field class="tag-list">
+        <mat-chip-list #chipList>
+          <mat-chip *ngFor="let tag of model.tags" [selectable]="tagsSelectable" [removable]="tagsRemovable"
+                    (removed)="removeTag(tag)">
+            {{tag}}
+            <mat-icon matChipRemove *ngIf="tagsRemovable">cancel</mat-icon>
+          </mat-chip>
+          <input placeholder="New tag..."
+                 [matChipInputFor]="chipList"
+                 [matChipInputSeparatorKeyCodes]="tagsSeparatorKeysCodes"
+                 [matChipInputAddOnBlur]="tagsAddOnBlur"
+                 (matChipInputTokenEnd)="addTag($event)"
+                 aria-describedby="tagsFeedback"
+                 required
+                 [ngClass]="{'is-invalid' : model.tags == null}">
+        </mat-chip-list>
+      </mat-form-field>
+      <div id="tagsFeedback" class="invalid-feedback">
+        Please provide tags
+      </div>
+    </div>
+  </div>
+  <div class="button-bar">
+    <button type="submit" class="btn btn-primary" (click)="onSave()" [disabled]="!model.valid() || loading">
+      Save
+      <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+    </button>
+    <button type="button" class="btn btn-secondary" (click)="onCancel()">Cancel</button>
+  </div>
+</form>
