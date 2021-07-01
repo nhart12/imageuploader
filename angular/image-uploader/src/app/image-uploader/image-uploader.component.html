@@ -1,0 +1,42 @@
+<h1 mat-dialog-title>Upload an image</h1>
+<div mat-dialog-content>
+
+  <input type="file" placeholder="Upload your file" [formControl]="fileFormControl" required
+    (change)="fileChange($event)">
+  <mat-error *ngIf="fileFormControl.invalid">Please select a file</mat-error>
+
+  <mat-form-field>
+    <mat-label>Image Title</mat-label>
+    <input matInput placeholder="Title" [(ngModel)]="model.title" required [formControl]="titleFormControl">
+    <mat-error *ngIf="titleFormControl.invalid">Please enter a title</mat-error>
+  </mat-form-field>
+
+  <mat-form-field appearance="standard">
+    <mat-label>Image Description</mat-label>
+    <input matInput placeholder="Description" [(ngModel)]="model.description" required
+      [formControl]="descriptionFormControl">
+    <mat-error *ngIf="descriptionFormControl.invalid">Please enter description</mat-error>
+  </mat-form-field>
+
+  <mat-form-field class="tag-list">
+    <mat-chip-list #chipList>
+      <mat-chip *ngFor="let tag of model.tags" [selectable]="tagsSelectable" [removable]="tagsRemovable"
+        (removed)="removeTag(tag)">
+        {{tag}}
+        <mat-icon matChipRemove *ngIf="tagsRemovable">cancel</mat-icon>
+      </mat-chip>
+      <input matInput placeholder="Add tags" [formControl]="tagsFormControl" [matChipInputFor]="chipList"
+        [matChipInputSeparatorKeyCodes]="tagsSeparatorKeysCodes" [matChipInputAddOnBlur]="tagsAddOnBlur"
+        (matChipInputTokenEnd)="addTag($event)" required>
+    </mat-chip-list>
+    <mat-error *ngIf="tagsFormControl.invalid">Please select tags</mat-error>
+  </mat-form-field>
+</div>
+<div mat-dialog-actions>
+  <button mat-button (click)="onCancel()">Cancel</button>
+
+  <button mat-button (click)="onSave()" [disabled]="!model.valid() || loading">
+    Save
+    <span *ngIf="loading" class="spinner-grow spinner-grow-sm" role="status" aria-hidden="true"></span>
+  </button>
+</div>

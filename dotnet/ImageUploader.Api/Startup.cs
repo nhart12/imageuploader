@@ -25,6 +25,15 @@ namespace ImageUploader
                      .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ImageDtoValidator>())
                      ;
 
+
+            services.AddCors((options =>
+            {
+                options.AddPolicy("Local", builder => builder
+                            .WithOrigins("http://localhost:4200", "Access-Control-Allow-Origin")
+                            .AllowAnyMethod()
+                            .AllowAnyHeader()
+                 );
+            }));
             services.AddInternalServices();
         }
 
@@ -43,6 +52,7 @@ namespace ImageUploader
 
             app.UseHttpsRedirection();
             app.UseRouting();
+            app.UseCors("Local");
 
             app.UseEndpoints(endpoints =>
             {
