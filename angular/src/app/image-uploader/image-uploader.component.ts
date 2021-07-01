@@ -4,6 +4,7 @@ import { ImageUploadService } from '../services/image-uploader.service'
 import { MatChipInputEvent } from '@angular/material';
 import { COMMA, ENTER } from '@angular/cdk/keycodes';
 import { ToastrService } from 'ngx-toastr';
+import { ImageMetadataModel } from '../services/image-api.model';
 
 @Component({
   selector: 'image-uploader',
@@ -28,7 +29,7 @@ export class ImageUploadComponent {
   cancel: EventEmitter<void> = new EventEmitter<void>();
 
   @Output()
-  done: EventEmitter<string> = new EventEmitter<string>();
+  done: EventEmitter<ImageMetadataModel> = new EventEmitter<ImageMetadataModel>();
 
   addTag(event: MatChipInputEvent): void {
     const input = event.input;
@@ -58,14 +59,19 @@ export class ImageUploadComponent {
 
   onSave() {
     this.loading = true;
-    this.imageUploadService.saveImage(this.model).subscribe(_ => {
+    this.imageUploadService.saveImage(this.model).subscribe(r => {
       this.toastr.success(`Successfully triggered job to create package export!`);
       this.loading = false;
+      this.done.emit(r);
     },
       err => {
         //show error toast
         this.toastr.error("Error triggering job to create package export: " + err.message);
         this.loading = false;
       });
+  }
+
+  onCancel() {
+    this.cancel.emit();
   }
 }

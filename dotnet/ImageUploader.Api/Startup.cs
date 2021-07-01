@@ -3,7 +3,6 @@ using ImageUploader.Core.Models;
 using ImageUploader.Internal.Public;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.SpaServices.AngularCli;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
@@ -25,11 +24,7 @@ namespace ImageUploader
             services.AddControllersWithViews()
                      .AddFluentValidation(fv => fv.RegisterValidatorsFromAssemblyContaining<ImageDtoValidator>())
                      ;
-            // In production, the Angular files will be served from this directory
-            services.AddSpaStaticFiles(configuration =>
-            {
-                configuration.RootPath = "ClientApp/dist";
-            });
+
             services.AddInternalServices();
         }
 
@@ -47,12 +42,6 @@ namespace ImageUploader
             }
 
             app.UseHttpsRedirection();
-            app.UseStaticFiles();
-            if (!env.IsDevelopment())
-            {
-                app.UseSpaStaticFiles();
-            }
-
             app.UseRouting();
 
             app.UseEndpoints(endpoints =>
@@ -62,14 +51,6 @@ namespace ImageUploader
                     pattern: "{controller}/{action=Index}/{id?}");
             });
 
-            app.UseSpa(spa =>
-            {
-                spa.Options.SourcePath = "ClientApp";
-                if (env.IsDevelopment())
-                {
-                    spa.UseAngularCliServer(npmScript: "start");
-                }
-            });
         }
     }
 }

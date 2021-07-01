@@ -26,7 +26,6 @@ export class ImageUploadService {
   }
 
   private uploadImage(file: File): Observable<string> {
-
     const formData: FormData = new FormData();
     formData.append('file', file, file.name);
     return this.http

@@ -5,12 +5,13 @@ import { HttpClientModule } from '@angular/common/http';
 import { RouterModule } from '@angular/router';
 import { MatFormFieldModule, MatChipsModule, MatIconModule } from '@angular/material'
 import { ToastrModule } from 'ngx-toastr';
-
 import { AppComponent } from './app.component';
 import { NavMenuComponent } from './nav-menu/nav-menu.component';
 import { HomeComponent } from './home/home.component';
 import { ImageUploadComponent } from './image-uploader/image-uploader.component';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -22,6 +23,7 @@ import { NoopAnimationsModule } from '@angular/platform-browser/animations';
     BrowserModule.withServerTransition({ appId: 'ng-cli-universal' }),
     HttpClientModule,
     FormsModule,
+    NgbModule,
     MatFormFieldModule,
     MatChipsModule,
     MatIconModule, 
