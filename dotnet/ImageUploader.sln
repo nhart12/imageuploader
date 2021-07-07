@@ -3,11 +3,13 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.31410.357
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Api", "ImageUploader.Api\ImageUploader.Api.csproj", "{13D2614A-62AC-4243-9129-5A24C2EEED8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageUploader.Api", "ImageUploader.Api\ImageUploader.Api.csproj", "{13D2614A-62AC-4243-9129-5A24C2EEED8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Core", "ImageUploader.Core\ImageUploader.Core.csproj", "{59F1C478-A9AD-45A7-87D0-847A075B2B29}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageUploader.Core", "ImageUploader.Core\ImageUploader.Core.csproj", "{59F1C478-A9AD-45A7-87D0-847A075B2B29}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Internal", "ImageUploader.Internal\ImageUploader.Internal.csproj", "{0EE23C4C-36C6-4886-A1BC-4CD95ADFBC96}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ImageUploader.Internal", "ImageUploader.Internal\ImageUploader.Internal.csproj", "{0EE23C4C-36C6-4886-A1BC-4CD95ADFBC96}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ImageUploader.Internal.Tests", "ImageUploader.Internal.Tests\ImageUploader.Internal.Tests.csproj", "{1208C517-FA3D-4381-A65C-DF354033DD5B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{0EE23C4C-36C6-4886-A1BC-4CD95ADFBC96}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0EE23C4C-36C6-4886-A1BC-4CD95ADFBC96}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0EE23C4C-36C6-4886-A1BC-4CD95ADFBC96}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1208C517-FA3D-4381-A65C-DF354033DD5B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1208C517-FA3D-4381-A65C-DF354033DD5B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1208C517-FA3D-4381-A65C-DF354033DD5B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1208C517-FA3D-4381-A65C-DF354033DD5B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
