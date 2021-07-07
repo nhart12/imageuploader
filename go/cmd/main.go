@@ -11,7 +11,7 @@ import (
 
 func handleRequests() {
 	apiHandler := api.NewRouter(storage.NewMockRepository())
-	log.Fatal(http.ListenAndServe(":8081", cors.Default().Handler(apiHandler.Router)))
+	log.Fatal(http.ListenAndServe(":8081", cors.New(cors.Options{AllowedMethods: []string{"GET", "POST", "DELETE"}}).Handler(apiHandler.Router)))
 }
 
 func main() {
